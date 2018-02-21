@@ -36,8 +36,61 @@ class Utilisateur
      * @Assert\NotBlank()
      * @ORM\Column(type="string", length=255)
      */
-    private $mail;
+    private $mail; 
 
-  
+    /**
+     * @ORM\Column(type="integer", nullable=true) 
+     * @ORM\OneToMany(targetEntity="App\Entity\Memo", mappedBy="Utilisateur")
+     */
+    public $Memo;
+
+
+
+    //Setter and getter
+    //id
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
+    //pseudo
+    public function getPseudo()
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo($pseudo)
+    {
+        $this->pseudo = $pseudo;
+    }
+
+    //password
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+
+    //mail
+    public function getMail()
+    {
+        return $this->mail;
+    }
+
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+    }
 
 }
