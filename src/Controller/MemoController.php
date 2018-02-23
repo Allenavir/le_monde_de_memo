@@ -65,10 +65,13 @@ class MemoController extends Controller
     */
         
     public function AddMemo(Request $request){        
-        $memo = new Memo;                    
+        $user = $this->getUser();
+
+        $memo = new Memo();                    
         $form= $this->createForm(MemoType::class, $memo);
         $form->handleRequest($request);
-        
+
+       
         $msg="";
 
         if($form->isSubmitted() ){
@@ -76,8 +79,12 @@ class MemoController extends Controller
         if($form->isValid()){
             
             $manager = $this->getDoctrine()->getManager();
-            $manager->persist($form->getData());
+            $memo = $form->getData();
+            $memo->setUtilisateur($user);
+            $manager->persist($memo);
             $manager->flush();
+            
+            
 
             $msg= "Memo ajouté avec succes";           
             }
@@ -93,7 +100,7 @@ class MemoController extends Controller
    
     
      /**
-    *@Route("supprimerMemo/{id}", name="SuppMemo",requirements={"id"="\d*"})
+    *@Route("memo/supprimer/{id}", name="SuppMemo",requirements={"id"="\d*"})
      */
     public function SuppMemo(Memo $memo){
         $repo = $this->getDoctrine()->getManager();
@@ -106,7 +113,7 @@ class MemoController extends Controller
 
     
      /**
-    *@Route("modifierMemo/{id}", name="modifMemo",requirements={"id"="\d*"})
+    *@Route("memo/modifier/{id}", name="modifMemo",requirements={"id"="\d*"})
      */
     public function modifMemo(Request $request, Memo $memo){
         $form= $this->createForm(MemoType::class, $memo);

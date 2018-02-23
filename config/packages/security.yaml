@@ -5,8 +5,7 @@ security:
             algorithm: bcrypt
             cost: 12
     
-    providers:
-        in_memory: { memory: ~ }
+    providers:      
 
         our_db_provider:
             entity:
@@ -18,7 +17,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
+            anonymous: ~
             provider: our_db_provider
             
             form_login:
@@ -50,4 +49,5 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/utilisateurs, roles: ROLE_ADMIN }
+         - { path: ^/mem , roles: ROLE_USER }
          

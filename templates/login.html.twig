@@ -1,3 +1,10 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Le Monde de Memo {% endblock %}
+
+
+{% block body %}
+
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
@@ -8,7 +15,9 @@
 
     <label for="password">Password:</label>
     <input type="password" id="password" name="_password" />
-    <input type="hidden" name="_target_path" value="/auth" />
+    <input type="hidden" name="_target_path" value="/home" />
 
-    <button type="submit">login</button>
+    <button type="submit">Se connecter</button>
 </form>
+
+ {% endblock %}

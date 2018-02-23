@@ -4,5 +4,8 @@
 
 
 {% block body %}
-<h2>Bienvenue ! </h2>
- {% endblock %}
+ {% if app.user %}
+<h2>Bienvenue {{ app.user.username }} ! </h2><br/><br/>
+{% endif %}
+<p>Texte descriptif</p>
+{% endblock %}

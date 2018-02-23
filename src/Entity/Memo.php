@@ -95,11 +95,11 @@ class Memo
 
 
 
-     /**
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateur", inversedBy="Memo")
      * @ORM\JoinColumn(nullable=false)
      */
-      private $Utilisateur;
+    private $utilisateur;
 
 
 
@@ -252,6 +252,18 @@ class Memo
            $this->supplement = $supplement;
        }
 
+        //utilisateur
+        public function getUtilisateur()
+        {
+            return $this->utilisateur;
+        }
+    
+        public function setUtilisateur($utilisateur)
+        {
+            $this->utilisateur = $utilisateur;
+        }
+
+        
 
 
 
@@ -259,4 +271,7 @@ class Memo
 
 
 
+
+
+    
 }

@@ -1,10 +1,25 @@
 {% block header %}
 <header>
- <button type="button">S'inscrire</button> 
-  <button type="button">Mon Compte</button> 
+
+
+{% if app.user %}
+<button type="button">Mon Compte</button> 
+{% else %}
+<button type="button">S'inscrire</button>
+{% endif %}
+
+  
+
  <a href="{{ path('home') }}"><img src="{{ asset("images/logo.jpg")}}" alt="image"></a>
- <button type="button">Se Connecter</button> 
-  <button type="button">Se déconnecter</button> <br/>
+
+
+{% if app.user %}
+<button type="button">Se Déconnecter</button> <br/>
+ {% else %}
+<button type="button">Se Connecter</button> <br/>
+  {% endif %}
+
+
 
  <a href="{{ path('TousMemos') }}">Tous</a>
  <a href="{{ path('TypeMemo' ,{'type': "film" }) }}">Films</a>

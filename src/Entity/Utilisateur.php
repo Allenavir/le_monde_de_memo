@@ -47,7 +47,8 @@ class Utilisateur  implements UserInterface, \Serializable
      * @ORM\Column(type="integer", nullable=true) 
      * @ORM\OneToMany(targetEntity="App\Entity\Memo", mappedBy="Utilisateur")
     */
-    public $Memo;
+    private $memo;
+    
 
 
 
@@ -91,6 +92,16 @@ class Utilisateur  implements UserInterface, \Serializable
     }
     
 
+     //memo
+     public function getMemo()
+     {
+         return $this->memo;
+     }
+     public function setMemo($memo)
+     {
+         $this->memo = $memo;
+     }
+
    
     /////////////////////////////////////////////   
     public function __construct()
@@ -119,7 +130,8 @@ class Utilisateur  implements UserInterface, \Serializable
 
     /** @see \Serializable::serialize() */
     public function serialize()
-    {   return json_encode(
+    {   
+        return json_encode(
         array(
                $this->id,
                $this->username,
@@ -127,7 +139,8 @@ class Utilisateur  implements UserInterface, \Serializable
                $this->mail,
                $this->role,
                $this->isActive,
-               $this->memo)
+               $this->memo
+            )
         );
     }
 
@@ -143,7 +156,7 @@ class Utilisateur  implements UserInterface, \Serializable
             $this->isActive,
             $this->memo
             
-        ) = json_encode($serialized);
+        ) = json_decode($serialized);
     }
 
     
