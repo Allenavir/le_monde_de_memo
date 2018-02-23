@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Le Monde de Memo {% endblock %}
+
+
+{% block body %}
+<br/><br/>
+
+ {% for memos in memo %} 
+ <a href="{{ path('DetailsMemo' ,{'id': memos.id }) }}">{{memos.type}} : {{memos.titre}} </a><br/><br/>
+ {% endfor %}
+
+
+ <a href="{{ path('AddMemo') }}">Ajouter un nouveau Memo</a></br><br>
+ {% endblock %}

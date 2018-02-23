@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Le Monde de Memo {% endblock %}
+
+
+{% block body %}
+<br/><br/>
+ 
+ {{memo.titre}} <br/> 
+ {{memo.description}} <br/><br/>
+
+ <a href="{{ path('SuppMemo',{'id': memo.id }) }}">Supprimer ce mémo</a><br/>
+ <a href="{{ path('modifMemo',{'id': memo.id }) }}">Modifier ce mémo</a>
+
+
+ {% endblock %}

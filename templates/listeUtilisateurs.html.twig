@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Le Monde de Memo {% endblock %}
+
+
+{% block body %}
+<br/><br/>
+
+ {% for utilisateurs in utilisateur %} 
+ {{utilisateurs.username}} 
+ {% endfor %}
+
+
+ {% endblock %}

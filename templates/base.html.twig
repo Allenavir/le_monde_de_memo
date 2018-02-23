@@ -2,11 +2,37 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}{% endblock %}</title>
+
+        {% block stylesheets %}
+            <!-- CSS -->
+            <!-- FONTS -->        
+            <!-- FONT AWESOME-->
+        {% endblock %}
+
     </head>
+
+
+
     <body>
+        {% block header %}
+             {{ include('header.html.twig') }}
+        {% endblock %}
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block footer %}
+            {{ include('footer.html.twig') }}
+        {% endblock %}
+
+
+
+        {% block javascripts %}
+        <!-- POUR LE JQUERY -->       
+        <!-- POUR LE FICHIER JS -->        
+        {% endblock %}
     </body>
+
+
+
 </html>

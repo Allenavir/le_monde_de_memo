@@ -1,0 +1,20 @@
+{% block header %}
+<header>
+ <button type="button">S'inscrire</button> 
+  <button type="button">Mon Compte</button> 
+ <a href="{{ path('home') }}"><img src="{{ asset("images/logo.jpg")}}" alt="image"></a>
+ <button type="button">Se Connecter</button> 
+  <button type="button">Se déconnecter</button> <br/>
+
+ <a href="{{ path('TousMemos') }}">Tous</a>
+ <a href="{{ path('TypeMemo' ,{'type': "film" }) }}">Films</a>
+ <a href="{{ path('TypeMemo' ,{'type': "serie" }) }}">Series</a>
+ <a href="{{ path('TypeMemo' ,{'type': "anime" }) }}">Animes</a>
+ <a href="{{ path('TypeMemo' ,{'type': "manga" }) }}">Mangas</a>
+ <a href="{{ path('TypeMemo' ,{'type': "roman" }) }}">Romans</a>
+ <a href="{{ path('TypeMemo' ,{'type': "comics" }) }}">Comics</a>
+ <a href="{{ path('TypeMemo' ,{'type': "jeux video" }) }}">Jeux vidéos</a>
+ <a href="{{ path('TypeMemo' ,{'type': "autres" }) }}">Autres</a>
+
+</header>
+{% endblock %}

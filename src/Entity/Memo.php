@@ -45,50 +45,50 @@ class Memo
     
 
      /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
 
 
     /**     
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $auteur;
 
 
     /**     
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $genre;
 
     /**     
-    * @ORM\Column(type="string", length=255)
+    * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $acteurs;
 
      /**
      * @ORM\Column(type="date")
      */
-    private $date;
+    private $date ;
 
     /**     
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $lienInfo;
 
     /**     
-    * @ORM\Column(type="string", length=255)
+    * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $lienStream;
 
     /**     
-    * @ORM\Column(type="string", length=255)
+    * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $lienChoix;
 
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text",nullable=true)
      */
     private $supplement;
 
@@ -99,7 +99,7 @@ class Memo
      * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateur", inversedBy="Memo")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $Utilisateur;
+      private $Utilisateur;
 
 
 
@@ -185,14 +185,14 @@ class Memo
     }
 
       //acteur
-      public function getActeur()
+      public function getActeurs()
       {
-          return $this->acteur;
+          return $this->acteurs;
       }
   
-      public function setActeur($acteur)
+      public function setActeurs($acteurs)
       {
-          $this->acteur = $acteur;
+          $this->acteurs = $acteurs;
       }
 
 
