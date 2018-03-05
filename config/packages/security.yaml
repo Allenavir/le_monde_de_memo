@@ -49,5 +49,6 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/utilisateurs, roles: ROLE_ADMIN }
+         - { path: ^/utilisateur/supprimer, roles: ROLE_ADMIN }
          - { path: ^/mem , roles: ROLE_USER }
          

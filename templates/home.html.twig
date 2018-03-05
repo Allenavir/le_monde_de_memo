@@ -2,10 +2,35 @@
 
 {% block title %} Le Monde de Memo {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">       
+ {% endblock %}
+
 
 {% block body %}
- {% if app.user %}
-<h2>Bienvenue {{ app.user.username }} ! </h2><br/><br/>
+ 
+<h2>{% if app.user %}
+{{ app.user.username }}
 {% endif %}
-<p>Texte descriptif</p>
+, Bienvenue sur le Monde de Memo.</h2>
+<p>
+Cette chanson dont le titre vous échappe encore, ce film dont vous ne vous souvenez plus du nom alors que vous en discutiez hier encore ?<br/><br/>
+
+
+Plutot que d’écrire ces informations sur une feuille de papier à jamais perdue, passez par «Le monde de Mémo».<br/><br/>
+
+Ici vous pourrez creer des fiches mémotecniques afin de garder en mémoire<br/>
+des films, séries, livres ou encore jeux vidéos.<br/><br/>
+
+Grâce à votre compte personnel, sauvegarder ici le titre d’une oeuvre culturelle de votre choix ainsi qu’une rapide description afin, plus tard, de retrouver rapidement ces informations.<br/><br/>
+
+Pour aller plus loin, ajouter une image, un genre, le nom du createur de l’oeuvre, un lien vers un site d’informations ou de streaming, tout ce qui vous parrais important.<br/><br/>
+
+Vous connaissez la date de sortie du prochain film à voir ou de l’album que vous attendez, ajouter la et recevez un mail le jour de la sortie.<br/><br/>
+
+N’hesitez plus et inscrivez-vous dès maintenant en cliquant sur ici .<br/><br/>
+
+Le monde de mémo vous simplifie la vie !</p>
+
 {% endblock %}

@@ -1,35 +1,60 @@
 {% block header %}
 <header>
+<div class="wrapper">
 
-
+<div class="one">
 {% if app.user %}
-<button type="button">Mon Compte</button> 
+<a href="{{ path('DetailsUtilisateur') }}"><input type="button" value="Mon Compte"></a> 
 {% else %}
-<button type="button">S'inscrire</button>
+<a href="{{ path('AddUtilisateur') }}"><input type="button" value="S'inscrire"></a> 
 {% endif %}
+</div>
 
   
+<div class="two">
+<a href="{{ path('home') }}"><img src="{{ asset("images/logo.png")}}" alt="image"> </a>
+</div>
 
- <a href="{{ path('home') }}"><img src="{{ asset("images/logo.jpg")}}" alt="image"></a>
-
-
+<div class="three">
 {% if app.user %}
-<button type="button">Se Déconnecter</button> <br/>
+<a href="{{ path('logout') }}"><input type="button" value="Se deconnecter"></a> 
  {% else %}
-<button type="button">Se Connecter</button> <br/>
+<a href="{{ path('login') }}"><input type="button" value="Se Connecter"></a> 
   {% endif %}
+</div>
 
 
 
- <a href="{{ path('TousMemos') }}">Tous</a>
- <a href="{{ path('TypeMemo' ,{'type': "film" }) }}">Films</a>
- <a href="{{ path('TypeMemo' ,{'type': "serie" }) }}">Series</a>
- <a href="{{ path('TypeMemo' ,{'type': "anime" }) }}">Animes</a>
- <a href="{{ path('TypeMemo' ,{'type': "manga" }) }}">Mangas</a>
- <a href="{{ path('TypeMemo' ,{'type': "roman" }) }}">Romans</a>
- <a href="{{ path('TypeMemo' ,{'type': "comics" }) }}">Comics</a>
- <a href="{{ path('TypeMemo' ,{'type': "jeux video" }) }}">Jeux vidéos</a>
- <a href="{{ path('TypeMemo' ,{'type': "autres" }) }}">Autres</a>
+ <div class="menu1"><a href="{{ path('TousMemos') }}">Tous</a></div>
+ <div class="menu2"><a href="{{ path('TypeMemo' ,{'type': "film" }) }}">Films</a></div>
+ <div class="menu3"><a href="{{ path('TypeMemo' ,{'type': "serie" }) }}">Series</a></div>
+ <div class="menu4"><a href="{{ path('TypeMemo' ,{'type': "anime" }) }}">Animes</a></div>
+ <div class="menu5"><a href="{{ path('TypeMemo' ,{'type': "manga" }) }}">Mangas</a></div>
+ <div class="menu6"><a href="{{ path('TypeMemo' ,{'type': "roman" }) }}">Romans</a></div>
+ <div class="menu7"><a href="{{ path('TypeMemo' ,{'type': "comics" }) }}">Comics</a></div>
+ <div class="menu8"><a href="{{ path('TypeMemo' ,{'type': "jeux video" }) }}">JV</a></div>
+ <div class="menu9"><a href="{{ path('TypeMemo' ,{'type': "autres" }) }}">Autres</a></div>
 
+
+ <div id="hamburger">
+  <a href="javascript:hamburger_click();"> MENU  </a>
+</div>
+ 
+<div id="menu">
+    <ul>
+    <li><a href="{{ path('home') }}">Home</a></li>
+    <li><a href="{{ path('TousMemos') }}">Tous</a></li>
+    <li><a href="{{ path('TypeMemo' ,{'type': "film" }) }}">Films</a></li>
+    <li><a href="{{ path('TypeMemo' ,{'type': "serie" }) }}">Series</a></li>
+    <li><a href="{{ path('TypeMemo' ,{'type': "anime" }) }}">Animes</a></li>
+    <li><a href="{{ path('TypeMemo' ,{'type': "manga" }) }}">Mangas</a></li>
+    <li><a href="{{ path('TypeMemo' ,{'type': "roman" }) }}">Romans</a></li>
+    <li><a href="{{ path('TypeMemo' ,{'type': "comics" }) }}">Comics</a></li>
+    <li><a href="{{ path('TypeMemo' ,{'type': "jeux video" }) }}">Jeux vidéos</a></li>
+    <li><a href="{{ path('TypeMemo' ,{'type': "autres" }) }}">Autres</a></li>   
+    </ul>
+</div>
+ 
+</div>
 </header>
 {% endblock %}

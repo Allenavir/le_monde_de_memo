@@ -7,8 +7,9 @@
         <title>{% block title %}{% endblock %}</title>
 
         {% block stylesheets %}
-            <!-- CSS -->
-            <!-- FONTS -->        
+            <!-- CSS --> <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+            <!-- CSS --> <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+            <!-- FONTS -->   <link href="http://allfont.net/allfont.css?fonts=findet-nemo" rel="stylesheet" type="text/css" />      
             <!-- FONT AWESOME-->
         {% endblock %}
 
@@ -29,7 +30,8 @@
 
         {% block javascripts %}
         <!-- POUR LE JQUERY -->       
-        <!-- POUR LE FICHIER JS -->        
+        <!-- POUR LE FICHIER JS -->  
+        <script type="text/javascript" src="{{ asset('js/commun.js') }}"></script>      
         {% endblock %}
     </body>
 

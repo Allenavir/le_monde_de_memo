@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Le Monde de Memo {% endblock %}
+
+
+{% block body %}
+ {% if app.user %}
+Pseudo : {{ app.user.username }} <br/>
+Mail : {{ app.user.mail }}
+{% endif %}
+{% endblock %}
