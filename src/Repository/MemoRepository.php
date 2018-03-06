@@ -26,14 +26,30 @@ class MemoRepository extends ServiceEntityRepository
     }
     */
 
-    public function findByType($value)
+    public function findByTypeUser($value, $id_user)
     {
         return $this->createQueryBuilder('m')
-            ->where('m.type = :value')->setParameter('value', $value)
+            ->where('m.type = :type')->setParameter('type', $value)
+            ->andWhere('m.utilisateur = :user')->setParameter('user', $id_user)
             ->orderBy('m.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
+
+    public function findByUser($id_user) {
+        return $this->createQueryBuilder('m')
+            ->where('m.utilisateur = :value')->setParameter('value', $id_user)
+            ->orderBy('m.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+
+    }
+
+
+
+    
 }

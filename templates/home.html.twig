@@ -10,10 +10,8 @@
 
 {% block body %}
  
-<h2>{% if app.user %}
-{{ app.user.username }}
-{% endif %}
-, Bienvenue sur le Monde de Memo.</h2>
+<h2>{% if app.user %}{{app.user.username}} ,{% endif %}
+Bienvenue sur le Monde de Memo.</h2>
 <p>
 Cette chanson dont le titre vous échappe encore, ce film dont vous ne vous souvenez plus du nom alors que vous en discutiez hier encore ?<br/><br/>
 

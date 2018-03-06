@@ -51,4 +51,5 @@ security:
          - { path: ^/utilisateurs, roles: ROLE_ADMIN }
          - { path: ^/utilisateur/supprimer, roles: ROLE_ADMIN }
          - { path: ^/mem , roles: ROLE_USER }
+         - { path: ^/Memos , roles: ROLE_USER }
          

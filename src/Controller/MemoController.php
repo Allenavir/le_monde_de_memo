@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Memo;
+use App\Entity\Utilisateur;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\MemoType;
 
@@ -23,9 +24,15 @@ class MemoController extends Controller
         return $liste;                     
     }
 
-    private function _getMemoType($type){
+    private function _getMemosTypeUser($type, $id_user){
         $repo = $this->getDoctrine()->getRepository(Memo::class);
-        $liste = $repo->findByType($type);
+        $liste = $repo->findByTypeUser($type, $id_user);
+        return $liste;                     
+    }
+
+    private function _getMemosByUser($id_user){
+        $repo = $this->getDoctrine()->getRepository(Memo::class);
+        $liste = $repo->findByUser($id_user);
         return $liste;                     
     }
 
@@ -37,6 +44,18 @@ class MemoController extends Controller
         
     public function displayMemos(){
         $bdd = $this->_getMemos();
+        return $this->render(
+            "liste.html.twig",
+            array( "memo" => $bdd )
+        );      
+    }
+
+    /**
+    * @Route("memos/utilisateur", name="MemosByUser")
+    */        
+    public function displayMemosByUser(){
+        $user = $this->getUser();
+        $bdd = $this->_getMemosByUser($user->getId());
         return $this->render(
             "liste.html.twig",
             array( "memo" => $bdd )
@@ -148,7 +167,8 @@ class MemoController extends Controller
     *@Route("memo/{type}", name="TypeMemo")
      */
     public function displayMemoType($type){
-        $bdd = $this->_getMemoType($type);
+        $user = $this->getUser();
+        $bdd = $this->_getMemosTypeUser($type , $user);
         return $this->render(
             "ListeType.html.twig",
             array( "memo" => $bdd )

@@ -45,7 +45,7 @@ class UtilisateurController extends Controller
     * @Route("utilisateur/inscription", name="AddUtilisateur")
     */
         
-    public function AddMemo(Request $request){        
+    public function AddUser(Request $request){        
         $utilisateur = new Utilisateur();                    
         $form= $this->createForm(UtilisateurType::class, $utilisateur);
         $form->handleRequest($request);
