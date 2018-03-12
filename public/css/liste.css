@@ -1,0 +1,43 @@
+h2 {
+    border-bottom : 10px solid #fc6f20;  
+    font-family: 'Findet Nemo', arial;
+    width:35%;
+    margin-left:1%;
+    font-size:1.8em;
+}
+
+
+#corps a {
+    margin-left:1%;
+    text-decoration: none;
+    color : black;
+    font-family: Arial;
+    font-size:1.3em;
+}
+
+a span {    
+    font-weight: bold;
+
+}
+
+a:hover {   
+    text-decoration: underline; 
+    text-decoration-color: #fc6f20;   
+}
+
+
+@media screen and (max-width: 991px) {  
+    h2 {
+        border-bottom : 10px solid #fc6f20;         
+        width:70%;       
+        font-size:1.6em;
+    }
+}
+
+@media screen and ( max-width:768px){
+    h2 {
+        border-bottom : 5px solid #fc6f20;         
+        width:95%;       
+        font-size:1.3em;
+    }
+    }

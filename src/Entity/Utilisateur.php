@@ -116,8 +116,13 @@ class Utilisateur  implements UserInterface, \Serializable
     {
         // you *may* need a real salt depending on your encoder
         // see section on salt below
-        return null;    }
+        return null;  
+    }
     
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
 
     public function getRoles()
     {

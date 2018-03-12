@@ -49,8 +49,8 @@ class UtilisateurController extends Controller
         $utilisateur = new Utilisateur();                    
         $form= $this->createForm(UtilisateurType::class, $utilisateur);
         $form->handleRequest($request);
-
-       
+        
+               
         $msg="";
 
         if($form->isSubmitted() ){
@@ -58,13 +58,17 @@ class UtilisateurController extends Controller
         if($form->isValid()){
             
             $manager = $this->getDoctrine()->getManager();
-            $memo = $form->getData();           
+            $utilisateur = $form->getData();  
+            
+            $utilisateur->setRole("ROLE_USER");
+            $utilisateur->setPassword(password_hash($utilisateur->getPassword(), PASSWORD_DEFAULT));
+
             $manager->persist($utilisateur);
             $manager->flush();
             
             
 
-            $msg= "Memo ajouté avec succes";           
+            $msg= "Vous êtes maintenant inscrit, veuillez vous connecter";           
             }
 
         else{
@@ -80,7 +84,7 @@ class UtilisateurController extends Controller
      /**
     *@Route("utilisateur/supprimer/{id}", name="SuppUtilisateur",requirements={"id"="\d*"})
      */
-    public function SuppMemo(Utilisateur $utilisateur){
+    public function SuppUtilisateur(Utilisateur $utilisateur){
         $repo = $this->getDoctrine()->getManager();
         $repo->remove($utilisateur);
         $repo->flush();
@@ -112,7 +116,7 @@ class UtilisateurController extends Controller
             $manager->persist($utilisateur);
             $manager->flush();
 
-            $msg= "Produit modifié avec succes";   
+            $msg= "Utilisateur modifié avec succes";   
             return $this->render("detailsUtilisateur.html.twig", array( "utilisateur"=>$utilisateur )
             );       
 

@@ -3,14 +3,20 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Memo;
 use App\Entity\Utilisateur;
-use Symfony\Component\HttpFoundation\Request;
 use App\Form\MemoType;
 
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
-class MemoController extends Controller
+
+class APIMemoController extends Controller
 {
     private function _getMemos(){
         $repo = $this->getDoctrine()->getRepository(Memo::class);
@@ -36,51 +42,58 @@ class MemoController extends Controller
         return $liste;                     
     }
 
-
-
+   
     /**
-    * @Route("/memos", name="TousMemos")
-    */
-        
-    public function displayMemos(){
-        $bdd = $this->_getMemos();
-        return $this->render(
-            "liste.html.twig",
-            array( "memo" => $bdd )
-        );      
-    }
-
-    /**
-    * @Route("memos/utilisateur", name="MemosByUser")
+    * @Route("memos/api/utilisateur", name="MemosByUserAPI")
+    * @Method("GET")
     */        
-    public function displayMemosByUser(){
+    public function displayMemosByUserAPI(){
         $user = $this->getUser();
-        $bdd = $this->_getMemosByUser($user->getId());
-        return $this->render(
-            "liste.html.twig",
-            array( "memo" => $bdd )
-        );      
+        $memos = $this->_getMemosByUser($user->getId());
+
+
+
+        $normalizer = new ObjectNormalizer();
+        $encoder = new JsonEncoder();
+        $serializer = new Serializer(array($normalizer), array($encoder));
+        $normalizer->setCircularReferenceHandler(
+            function ($object) {
+                return $object->getId();
+            }
+        );
+
+        // Choisir la liste des champs à afficher dans la serialisation
+        // $options = array("attributes"=>array('id','title','img','additionnal'));
+        $rep = new Response($serializer->serialize($memos, 'json'));
+        $rep->headers->set('Access-Control-Allow-Origin','http://localhost:4200');
+        return $rep;         
     }
 
    
      /**
-    *@Route("memo/{id}", name="DetailsMemo",requirements={"id"="\d*"})
+    *@Route("api/memo/{id}", name="DetailsMemoAPI",requirements={"id"="\d*"})
      */
     public function displayMemo($id){
-        $bdd = $this->_getMemo($id);
-        return $this->render(
-            "details.html.twig",
-            array( "memo" => $bdd )
-        );      
+        $memo = $this->_getMemo($id);
+        //$memo->setImage($request->getUriForPath('/'.$memo->getImage()));
+
+        $normalizer = new ObjectNormalizer();
+        $encoder = new JsonEncoder();
+        $serializer = new Serializer(array($normalizer), array($encoder));
+        $normalizer->setCircularReferenceHandler(
+            function ($object) {
+                return $object->getId();
+            }
+        );
+
+        $rep = new Response($serializer->serialize($memo, 'json'));
+        $rep->headers->set('Access-Control-Allow-Origin','http://localhost:4200');
+        return $rep;  
+             
     }
-
-
-
-
-
-
+    
     /**
-    * @Route("memo/ajouter", name="AddMemo")
+    * @Route("api/memo/ajouter", name="AddMemoAPI")
     */
         
     public function AddMemo(Request $request){        
@@ -119,7 +132,7 @@ class MemoController extends Controller
    
     
      /**
-    *@Route("memo/supprimer/{id}", name="SuppMemo",requirements={"id"="\d*"})
+    *@Route("api/memo/supprimer/{id}", name="SuppMemoAPI",requirements={"id"="\d*"})
      */
     public function SuppMemo(Memo $memo){
         $repo = $this->getDoctrine()->getManager();
@@ -132,7 +145,7 @@ class MemoController extends Controller
 
     
      /**
-    *@Route("memo/modifier/{id}", name="modifMemo",requirements={"id"="\d*"})
+    *@Route("api/memo/modifier/{id}", name="modifMemoAPI",requirements={"id"="\d*"})
      */
     public function modifMemo(Request $request, Memo $memo){
         $form= $this->createForm(MemoType::class, $memo);
@@ -164,15 +177,14 @@ class MemoController extends Controller
 
    
      /**
-    *@Route("memo/{type}", name="TypeMemo")
+    *@Route("api/memo/{type}", name="TypeMemoAPI")
      */
     public function displayMemoType($type){
         $user = $this->getUser();
         $bdd = $this->_getMemosTypeUser($type , $user);
         return $this->render(
             "ListeType.html.twig",
-            array( "memos" => $bdd,
-            "type" => $type )
+            array( "memo" => $bdd )
         );      
     }
 

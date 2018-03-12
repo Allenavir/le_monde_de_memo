@@ -28,15 +28,14 @@ class MemoType extends AbstractType
                 'jeux vidéo' => "jeux video",
                 'autres' => "autres"
             ),
-            "required"=>true, "label" => false  ));  
+            "required"=>true, "label" => false  )); 
+        $builder->add("Date",DateType::class, array("required"=>false, "label" => "Date d'ajout", 'format' => 'dd-MM-yyyy')); 
       
        
         $builder->add("Image",TextType::class, array("attr"=>array("placeholder"=>"URL d'une image"),"required"=>false, "label" => false));
         $builder->add("Auteur",TextType::class, array("attr"=>array("placeholder"=>"Nom de l'auteur"),"required"=>false, "label" => false));
         $builder->add("Genre",TextType::class, array("attr"=>array("placeholder"=>"Genre (Sci-fi, romance ...)"),"required"=>false, "label" => false));
         $builder->add("acteurs",TextType::class, array("attr"=>array("placeholder"=>"Acteurs principaux"),"required"=>false, "label" => false));
-       
-        $builder->add("Date",DateType::class, array("required"=>false, "label" => false, 'format' => 'dd-MM-yyyy'));
       
         $builder->add("LienInfo",TextType::class, array("attr"=>array("placeholder"=>"Lien vers un site d'informations sur ce media"),"required"=>false, "label" => false));
         $builder->add("LienStream",TextType::class, array("attr"=>array("placeholder"=>"Lien vers un site de streaming/scans sur ce media"),"required"=>false, "label" => false));

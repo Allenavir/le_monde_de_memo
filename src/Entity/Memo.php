@@ -69,7 +69,7 @@ class Memo
      /**
      * @ORM\Column(type="date")
      */
-    private $date ;
+    private $date;
 
     /**     
      * @ORM\Column(type="string", length=255,nullable=true)

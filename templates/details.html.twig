@@ -2,17 +2,70 @@
 
 {% block title %} Le Monde de Memo {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">       
+ {% endblock %}
 
 {% block body %}
-<br/><br/>
- 
- {{memo.titre}} <br/> 
- {{memo.description}} <br/><br/>
 
- 
+<div id="titre">
+<h2>{{memo.titre}} </h2> 
+</div>
 
- <a href="{{ path('SuppMemo',{'id': memo.id }) }}">Supprimer ce mémo</a><br/>
- <a href="{{ path('modifMemo',{'id': memo.id }) }}">Modifier ce mémo</a>
+
+<div id="test">
+
+    <div id="image">
+        {% if memo.image %}
+        <img src={{memo.image}} alt="image"><br/> 
+        {% endif %}
+    </div>
+ 
+    <div id="texte"> 
+        <span class="description">DESCRIPTION</span><br/>
+        <span id="descriptionTotale">{{memo.description}}</span> <br/><br/>
+        <span id="date"><span class="gras">Memo ajouté le :</span> {{memo.date|date("m/d/Y")}}</span> <br/>
+        <br/>
+
+        {% if memo.auteur %}
+        <span id="auteur"><span class="gras">De</span> {{memo.auteur}}</span> <br/><br/>
+        {% endif %}
+
+        {% if memo.genre %}
+        <span id="genre"><span class="gras">Genres</span>  {{memo.genre}}</span><br/><br/>
+        {% endif %}
+
+        {% if memo.acteurs %}
+        <span id="acteurs"><span class="gras">Avec</span>  {{memo.acteurs}}</span><br/><br/>
+        {% endif %}
+
+        {% if memo.supplement %}
+        <span> <span class="gras">Informations complémentraires</span> <br/>{{memo.supplement}}</span>
+        {% endif %}       
+    </div>
+</div>
+
+
+<div id="lien">
+{% if memo.lienInfo %}
+ <a  class="liens" href={{memo.lienInfo}}> <span class="gras">Votre site d'informations :</span> {{memo.lienInfo}}</a><br/>
+ {% endif %}
+
+{% if memo.lienStream %}
+ <a class="liens" href={{memo.lienStream}}><span class="gras">Votre site de streaming :</span> {{memo.lienStream}}</a><br/>
+ {% endif %}
+
+{% if memo.lienChoix %}
+<a class="liens" href= {{memo.lienChoix}}><span class="gras">Votre site supplémentaire :</span> {{memo.lienChoix}}</a><br/><br/><br/><br/><br/>
+ {% endif %}
+</div>
+<br/>
+
+<div class="autre">
+ <a class="liens2" href="{{ path('SuppMemo',{'id': memo.id }) }}">Supprimer ce mémo</a><br/>
+ <a class="liens2" href="{{ path('modifMemo',{'id': memo.id }) }}">Modifier ce mémo</a>
+</div>
 
 
  {% endblock %}

@@ -2,17 +2,23 @@
 
 {% block title %} Le Monde de Memo {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/liste.css') }}">       
+ {% endblock %}
+
 
 {% block body %}
-<br/><br/>
-
+<div id="corps">
+<h2>Vos fiches mnemotechniques </h2><br/>
 
  {% for memos in memo %} 
- <a href="{{ path('DetailsMemo' ,{'id': memos.id }) }}">{{memos.type}} : {{memos.titre}} </a><br/><br/>
+ <a href="{{ path('DetailsMemo' ,{'id': memos.id }) }}"><span>{{memos.type}} :</span> {{memos.titre}} </a><br/>
  {% endfor %}
 
-
+<br/> 
  <a href="{{ path('AddMemo') }}">Ajouter un nouveau Memo</a></br><br>
+ </div>
  {% endblock %}
 
 

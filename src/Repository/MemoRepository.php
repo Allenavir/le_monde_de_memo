@@ -31,7 +31,7 @@ class MemoRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('m')
             ->where('m.type = :type')->setParameter('type', $value)
             ->andWhere('m.utilisateur = :user')->setParameter('user', $id_user)
-            ->orderBy('m.id', 'ASC')
+            ->orderBy('m.date', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -41,12 +41,11 @@ class MemoRepository extends ServiceEntityRepository
     public function findByUser($id_user) {
         return $this->createQueryBuilder('m')
             ->where('m.utilisateur = :value')->setParameter('value', $id_user)
-            ->orderBy('m.id', 'ASC')
+            ->orderBy('m.date', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
-
     }
 
 

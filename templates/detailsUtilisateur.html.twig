@@ -4,8 +4,10 @@
 
 
 {% block body %}
+<div id="corps">
  {% if app.user %}
-Pseudo : {{ app.user.username }} <br/>
-Mail : {{ app.user.mail }}
+<h3>Pseudo : {{ app.user.username }}</h3>
+<h3>Mail : {{ app.user.mail }}</h3>
 {% endif %}
+</div>
 {% endblock %}
