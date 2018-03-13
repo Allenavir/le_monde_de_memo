@@ -3,10 +3,20 @@
 {% block title %} Le Monde de Memo {% endblock %}
 
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/formUser.css') }}">       
+ {% endblock %}
+
 {% block body %}
-<br/>
+<div id="corps">
 {{ form_start(form) }}
 {{ form_widget(form) }}
-{{ form_end(form) }}<br/>
+
+<div id="bouton">
+{{ form_end(form) }}
+</div>
+
+</div>
 <p>{{msg}}</p> 
 {% endblock %}

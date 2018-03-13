@@ -1,0 +1,136 @@
+#formulaire {
+    margin-left:1%;
+    width: 100%;
+    font-family: Arial;
+}
+
+.Arial{
+    font-family: Arial;
+    }
+
+
+
+#formulaire .titre {
+   width : 400px;
+}
+
+#formulaire .description{
+    width : 400px;
+    height : 100px;
+}
+
+#formulaire .type{
+    width : 200px;   
+    text-align: center;
+    background:  #3d3a31 ;
+    color:  #fc6f20;
+    font-weight: bolder;
+    font-size:1.2em; 
+}
+
+#formulaire .date {
+    width : 500px;   
+}
+
+#memo_Date_day, #memo_Date_year , #memo_Date_month {
+    background:  #3d3a31 ;
+    color:  #fc6f20;      
+    text-align: center;
+    width:100px;
+    font-weight: bolder;
+    font-size:1.2em; 
+}
+
+
+#formulaire h2{
+    border-bottom : 7px solid #fc6f20;  
+    font-family: 'Findet Nemo', arial;
+    width:30%;    
+    font-size:2em;    
+}
+
+
+#formulaire input, #formulaire textarea {
+    border: solid black 1px; ; 
+    border-radius: 2pt;
+    color: #fc6f20; 
+    font-weight: bolder;
+    font-size:1.2em;     
+}
+
+
+
+#formulaire button{
+    border: solid #fc6f20 2px; ; 
+    border-radius: 5pt;
+    background-color: #3d3a31;
+    color: #fc6f20;  
+    padding:5px;  
+    font-family: Arial;
+    width:150px;
+    font-weight: bolder;
+    font-size:1.2em;
+}
+
+
+
+
+@media screen and ( max-width:768px){
+    
+
+    #formulaire .titre {
+        width : 300px;
+     }
+     
+     #formulaire .description{
+         width : 300px;
+         }
+     
+     #formulaire .type{
+         width : 150px;   
+         font-size:0.7em;       
+     }
+     
+     #formulaire .date {
+         width : 300px;   
+     }
+     
+     #memo_Date_day, #memo_Date_year , #memo_Date_month {
+         background:  #3d3a31 ;
+         color:  #fc6f20;      
+         text-align: center;
+         width:50px;
+     }
+     
+     
+     #formulaire h2{
+         border-bottom : 7px solid #fc6f20;  
+         font-family: 'Findet Nemo', arial;
+         width:75%;    
+         font-size:1.3em;    
+     }
+
+     #formulaire input, #formulaire textarea {
+        border: solid black 1px; ; 
+        border-radius: 2pt;
+        color: #fc6f20; 
+        font-weight: bolder;
+        font-size:0.7em;     
+    }
+    
+    
+    
+    #formulaire button{
+        border: solid #fc6f20 2px; ; 
+        border-radius: 5pt;
+        background-color: #3d3a31;
+        color: #fc6f20;  
+        padding:5px;  
+        font-family: Arial;
+        width:150px;
+        font-weight: bolder;
+        font-size:0.7em;
+    }
+    
+      
+}

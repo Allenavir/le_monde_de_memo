@@ -3,10 +3,70 @@
 {% block title %} Le Monde de Memo {% endblock %}
 
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/formMemo.css') }}">       
+ {% endblock %}
+
 {% block body %}
-<br/>
 {{ form_start(form) }}
-{{ form_widget(form) }}
+<div id="formulaire">
+
+<h2>Champs Obligatoires </h2>
+
+{{ form_widget((form.type), {'attr': {'class': 'type Arial'}}) }}
+<br/><br/>
+
+
+{{ form_widget((form.titre), {'attr': {'class': 'titre Arial'}}) }} 
+<br/><br/>
+
+
+{{ form_widget((form.description), {'attr': {'class': 'description Arial'}}) }}
+<br/><br/>
+
+
+Date d'ajout : {{ form_widget((form.Date), {'attr': {'class': 'date Arial'}}) }}
+<br/><br/>
+
+
+<h2>Champs facultatifs</h2>
+
+
+{{ form_widget((form.Image), {'attr': {'class': 'titre Arial'}}) }}
+<br/><br/>
+
+
+{{ form_widget((form.Auteur), {'attr': {'class': 'titre Arial'}}) }}
+<br/><br/>
+
+
+{{ form_widget((form.Genre), {'attr': {'class': 'titre Arial'}}) }}
+<br/><br/>
+
+
+{{ form_widget((form.acteurs), {'attr': {'class': 'titre Arial'}}) }}
+<br/><br/><br/>
+
+
+{{ form_widget((form.LienInfo), {'attr': {'class': 'date Arial'}}) }}
+<br/>
+
+{{ form_widget((form.LienStream), {'attr': {'class': 'date Arial'}}) }}
+<br/>
+
+{{ form_widget((form.LienChoix), {'attr': {'class': 'date Arial'}}) }}
+<br/><br/><br/>
+
+
+{{ form_widget((form.Supplement), {'attr': {'class': 'description Arial'}}) }}
+<br/><br/>
+
 {{ form_end(form) }}<br/>
+
+
+
 <p>{{msg}}</p> 
+
+</div>
 {% endblock %}
