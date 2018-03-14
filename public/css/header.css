@@ -221,4 +221,12 @@ header a input{
   {  
   text-decoration: underline; 
 }
+
+header a input{
+ font-size:0.7em;
+}
+
+.two img {   
+  height:70px;  
+}
 }
