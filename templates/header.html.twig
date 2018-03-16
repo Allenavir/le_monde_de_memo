@@ -24,7 +24,7 @@
 </div>
 
 
-
+{% if app.user %}
  <div class="menu1"><a href="{{ path('MemosByUser') }}">Tous</a></div>
  <div class="menu2"><a href="{{ path('TypeMemo' ,{'type': "film"}) }}">Films</a></div>
  <div class="menu3"><a href="{{ path('TypeMemo' ,{'type': "serie" }) }}">Series</a></div>
@@ -34,6 +34,10 @@
  <div class="menu7"><a href="{{ path('TypeMemo' ,{'type': "comics" }) }}">Comics</a></div>
  <div class="menu8"><a href="{{ path('TypeMemo' ,{'type': "jeux video" }) }}">JV</a></div>
  <div class="menu9"><a href="{{ path('TypeMemo' ,{'type': "autres" }) }}">Autres</a></div>
+{% else %}
+<div class="menu10">Parce que nous avons tous une memoire de poisson</div>
+{% endif %}
+
 
 
  <div id="hamburger">

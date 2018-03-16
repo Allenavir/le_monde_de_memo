@@ -37,6 +37,14 @@ class MemoController extends Controller
     }
 
 
+    /**
+    * @Route("/", name="retourHome")
+    */
+
+    public function retourHome(){
+        return $this->redirectToRoute('home'); 
+    }
+
 
     /**
     * @Route("/memos", name="TousMemos")
@@ -95,17 +103,17 @@ class MemoController extends Controller
 
         if($form->isSubmitted() ){
 
-        if($form->isValid()){
-            
+        if($form->isValid()){           
+                   
             $manager = $this->getDoctrine()->getManager();
-            $memo = $form->getData();
+            $memo = $form->getData();            
             $memo->setUtilisateur($user);
             $manager->persist($memo);
             $manager->flush();
             
             
 
-            $msg= "Memo ajouté avec succes";           
+            $msg= "Memo ajouté avec succes, vous pouvez retrouner dans le menu de votre choix.";           
             }
 
         else{
@@ -125,8 +133,8 @@ class MemoController extends Controller
         $repo = $this->getDoctrine()->getManager();
         $repo->remove($memo);
         $repo->flush();
-
-        return $this->render("liste.html.twig", array("memo"=>$memo));    
+        
+        return $this->redirectToRoute('TousMemos');   
     } 
 
 
@@ -147,11 +155,11 @@ class MemoController extends Controller
             $manager->persist($memo);
             $manager->flush();
 
-            $msg= "Produit modifié avec succes";   
-            return $this->render("details.html.twig", array( "memo"=>$memo )
-            );       
+            $msg= "Memo modifié avec succes, veuillez retourner au menu";   
+            //return $this->render("details.html.twig", array( "memo"=>$memo )
+            return $this->redirectToRoute('DetailsMemo', array('id'=>$memo->getId()));   
 
-            }
+        }
 
         else{
             $msg= "Vous avez oublié de remplir un champs";

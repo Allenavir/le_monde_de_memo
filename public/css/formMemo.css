@@ -1,3 +1,12 @@
+#msg {
+    color:  #fc6f20;   
+    font-weight: bolder;
+    font-size:1.2em; 
+    font-family: Arial;
+    margin-left: 1%;
+}
+
+
 #formulaire {
     margin-left:1%;
     width: 100%;

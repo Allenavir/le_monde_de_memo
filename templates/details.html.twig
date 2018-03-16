@@ -10,7 +10,7 @@
 {% block body %}
 
 <div id="titre">
-<h2>{{memo.titre}} </h2> 
+<h2>{{ memo.type }} : {{memo.titre}} </h2> 
 </div>
 
 
@@ -45,19 +45,19 @@
         {% endif %}       
     </div>
 </div>
-
+<br/><br/>
 
 <div id="lien">
 {% if memo.lienInfo %}
- <a  class="liens" href={{memo.lienInfo}}> <span class="gras">Votre site d'informations :</span> {{memo.lienInfo}}</a><br/>
+ <a  class="liens" href="{{ relative_path(memo.lienInfo) }}"> <span class="gras">Votre site d'informations :</span> {{memo.lienInfo}}</a><br/>
  {% endif %}
 
 {% if memo.lienStream %}
- <a class="liens" href={{memo.lienStream}}><span class="gras">Votre site de streaming :</span> {{memo.lienStream}}</a><br/>
+ <a class="liens" href="{{ relative_path(memo.lienStream)}}"><span class="gras">Votre site de streaming :</span> {{memo.lienStream}}</a><br/>
  {% endif %}
 
 {% if memo.lienChoix %}
-<a class="liens" href= {{memo.lienChoix}}><span class="gras">Votre site supplémentaire :</span> {{memo.lienChoix}}</a><br/><br/><br/><br/><br/>
+<a class="liens" href= "{{ relative_path(memo.lienChoix)}}"><span class="gras">Votre site supplémentaire :</span> {{memo.lienChoix}}</a><br/><br/><br/><br/><br/>
  {% endif %}
 </div>
 <br/>
